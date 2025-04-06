@@ -1,6 +1,16 @@
-import {Schema} from "@nestjs/mongoose";
-@Schema({versionKey:false})
+import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
+import { AbstractDocument } from "src/database/abstract.schema";
 
-export class UserDocument{
-    
+@Schema({versionKey:false})
+export class UserDocument extends AbstractDocument{
+    @Prop()
+    username: string;
+
+    @Prop()
+    password: string;
+
+
+
 }
+
+export const UserSchema = SchemaFactory.createForClass(UserDocument);
